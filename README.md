@@ -1,6 +1,6 @@
 # react---counter-clock-timer-emoji
 
-![react hw2 - 1](https://user-images.githubusercontent.com/81373639/133988322-9fd8afbf-c7bf-40b9-9d82-ac0e4f851e76.png)
+![react hw2 - 1](https://user-images.githubusercontent.com/81373639/133992272-aab7ec87-c130-4292-ba16-dbc2f835369f.png)
 
 ![react hw2 - 2](https://user-images.githubusercontent.com/81373639/133988330-94187502-7d63-4bf8-bfa8-6b9ffaee9abc.png)
 
