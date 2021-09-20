@@ -53,10 +53,10 @@ export class Timer extends React.Component {
     } else {
       this.state.hourString = this.state.hour;
     }
-    if (this.state.sec === 59) {
+    if (this.state.sec === 60) {
       this.setState({ sec: 0, min: this.state.min + 1 });
     }
-    if (this.state.min === 59) {
+    if (this.state.min === 60) {
       this.setState({ min: 0, hour: this.state.hour + 1 });
     }
 
