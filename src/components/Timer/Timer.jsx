@@ -1,6 +1,10 @@
 import React from "react";
 import styles from "./Timer.module.css";
 
+function formatTimeNumber(timeNumber) {
+  return timeNumber < 10 ? `0${timeNumber}` : timeNumber;
+}
+
 export class Timer extends React.Component {
   constructor(props) {
     super(props);
@@ -8,13 +12,11 @@ export class Timer extends React.Component {
       sec: 0,
       min: 0,
       hour: 0,
-      secString: "",
-      minString: "",
-      hourString: "",
     };
   }
 
   onClickStart = () => {
+    clearInterval(this.timerID);
     this.timerID = setInterval(() => this.secondPlus(), 1000);
   };
 
@@ -22,6 +24,13 @@ export class Timer extends React.Component {
     this.setState({
       sec: ++this.state.sec,
     });
+
+    if (this.state.sec === 60) {
+      this.setState({ sec: 0, min: this.state.min + 1 });
+    }
+    if (this.state.min === 60) {
+      this.setState({ min: 0, hour: this.state.hour + 1 });
+    }
   }
 
   onClickStop = () => {
@@ -38,32 +47,13 @@ export class Timer extends React.Component {
   };
 
   render() {
-    if (this.state.sec <= 9) {
-      this.state.secString = "0" + this.state.sec;
-    } else {
-      this.state.secString = this.state.sec;
-    }
-    if (this.state.min <= 9) {
-      this.state.minString = "0" + this.state.min;
-    } else {
-      this.state.minString = this.state.min;
-    }
-    if (this.state.hour <= 9) {
-      this.state.hourString = "0" + this.state.hour;
-    } else {
-      this.state.hourString = this.state.hour;
-    }
-    if (this.state.sec === 60) {
-      this.setState({ sec: 0, min: this.state.min + 1 });
-    }
-    if (this.state.min === 60) {
-      this.setState({ min: 0, hour: this.state.hour + 1 });
-    }
+    const { hour, min, sec } = this.state;
 
     return (
       <div className={styles.card}>
         <div className={styles.cardCount}>
-          {this.state.hourString}:{this.state.minString}:{this.state.secString}
+          {formatTimeNumber(hour)}:{formatTimeNumber(min)}:
+          {formatTimeNumber(sec)}
         </div>
 
         <div className={styles.cardActive}>
